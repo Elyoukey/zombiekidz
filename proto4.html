@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <style>
+    body{
+      overflow: hidden;
+    }
+    #canvas{
+      width:100em;
+      height: 100em;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: grab;
+    }
+
+    #commands{
+      position: fixed;
+      top:0;
+      left:0;
+      padding: 1vh;
+    }
+    .zoom-level-1{
+      transform: scale(0.1);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-2{
+      transform: scale(0.25);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-3{
+      transform: scale(0.5);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-4{
+      transform: scale(0.75);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-5{
+      transform: scale(1);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-6{
+      transform: scale(1.25);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-7{
+      transform: scale(1.5);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-8{
+      transform: scale(1.75);
+      transform-origin: 50% 50% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-9{
+      transform: scale(2);
+      transform-origin: 50% 50% 0px;
+    }
+
+    .flex-row{
+      width: 100%;
+      display: -webkit-flex; /* Safari */
+      -webkit-justify-content: center; /* Safari 6.1+ */
+      display: flex;
+      justify-content: center;
+    }
+
+    .image{
+      width: 600px;
+      padding: 2em;
+      visibility: hidden;
+    }
+
+    #card4{
+      width: 800px;
+      visibility: visible;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<div id="canvas" class="zoom-level-3">
+  <div class="flex-row">
+    <img src="img/card_solo/card1.png" id="card1"  usemap="#card1map" class="image" />
+    <map name="card1map">
+      <area shape="rect" coords="34,44,270,350" alt="" href="#card2">
+    </map>
+    <img src="img/card_solo/card2.png" id="card2"  usemap="#card2map" class="image" />
+    <map name="card2map">
+      <area shape="rect" coords="34,44,270,350" alt="" href="#card3">
+    </map>
+    <img src="img/card_solo/card3.png" id="card3"  usemap="#card3map" class="image" />
+    <map name="card3map">
+      <area shape="rect" coords="34,44,270,350" alt="" href="#card5">
+    </map>
+  </div>
+  <div class="flex-row">
+    <img src="img/card_solo/card4.png" usemap="#card4map" id="card4" class="image" />
+    <map name="card4map">
+      <area shape="rect" coords="0,0,300,400" alt="" id="card4map_point1" href="#card1">
+    </map>
+  </div>
+  <div class="flex-row">
+    <img src="img/card_solo/card5.png" id="card5"  usemap="#card5map" class="image" />
+    <map name="card5map">
+      <area shape="rect" coords="34,44,270,350" alt="" href="#card6">
+    </map>
+    <img src="img/card_solo/card6.png" id="card6"  usemap="#card6map" class="image" />
+    <map name="card6map">
+      <area shape="rect" coords="34,44,270,350" alt="" href="#card7">
+    </map>
+    <img src="img/card_solo/card7.png" id="card7" class="image" />
+  </div>
+
+</div>
+<div id="commands">
+  <input type="button" id="zoomin" value="+" aria-label="zoom in"/>
+  <input type="button" id="zoomout" value="-" aria-label="zoom out" />
+</div>
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js?v=000"></script>
+
+
+</body>
+
+</html>
