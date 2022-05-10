@@ -20,19 +20,34 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
-  <style>
+  <style>body{overflow: scroll}
     .image{
       position: absolute;
-      -visibility: hidden;
-      width: 500px;
+      top: 140px;
+      left: 140px;
+      visibility: hidden;
+      width: 350px;
       border-radius: 10px;
       border:10px solid white;
       box-shadow: 10px 5px 5px #555555;
     }
 
+    .image-show{
+      visibility: visible;
+      animation: giggle 500ms;
+
+    }
+ @keyframes giggle {
+   0%{ transform: rotate(10deg);}
+   33%{ transform: rotate(-10deg);}
+   50%{ transform: rotate(10deg);}
+   75%{ transform: rotate(-10deg);}
+   100%{ transform: rotate(0deg);}
+ }
 
     .shadow-up{box-shadow: 20px 10px 10px #555555;}
-    #card1{
+
+    /*#card1{
       position: absolute;
       top: 10px;
       left: 10px;
@@ -54,7 +69,6 @@
       position: absolute;
       top: 600px;
       left: 600px;
-      visibility: visible;
     }
 
     #card5{
@@ -74,18 +88,7 @@
       top: 1200px;
       left: 1300px;
     }
-
-    #screen{
-      position: relative;
-      margin: 30px auto;
-      max-width: 600px;
-      border: 20px solid black;
-      border-radius: 5px;
-      background: #555555;
-      overflow: hidden;
-      height: 600px;
-
-    }
+*/
     #canvas{
       width: 100em;
       height: 100em;
@@ -94,10 +97,6 @@
       top: 0;
       left: 0;
       cursor: grab;
-
-      background: #b3d4fc;
-      opacity: 0.5;
-
     }
 
     #commands{
@@ -124,47 +123,47 @@
 
     .zoom-level-1{
       transform: scale(0.1);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-2{
       transform: scale(0.25);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-3{
       transform: scale(0.5);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-4{
       transform: scale(0.75);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-5{
       transform: scale(1);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-6{
       transform: scale(1.25);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-7{
       transform: scale(1.5);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-8{
       transform: scale(1.75);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
       transition: transform 0.2s;
     }
     .zoom-level-9{
       transform: scale(2);
-      transform-origin: 50% 50% 0px;
+      transform-origin: 0% 0% 0px;
     }
   </style>
 </head>
@@ -173,19 +172,33 @@
 
 <div id="canvas" class="zoom-level-5">
 
-  <img src="img/card_solo/p-01color.jpg" id="card1" usemap="#card1map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-01color.jpg" id="card1" usemap="#card1map" class="image puzzle image-show" data-scale="1"/>
+  <img src="img/card_solo/p-02color.jpg" id="card2" usemap="#card2map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-03color.jpg" id="card3" usemap="#card3map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-04color.jpg" id="card4" usemap="#card4map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-05color.jpg" id="card5" usemap="#card5map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-06color.jpg" id="card6" usemap="#card6map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-07color.jpg" id="card7" usemap="#card7map" class="image puzzle" data-scale="1"/>
+
+  <!-- mappings -->
   <map name="card1map">
-    <area shape="rect" coords="34,44,270,350" alt="" href="#card5">
+    <area shape="rect" coords="0,0,100,100" alt="" href="#card2">
+    <area shape="rect" coords="150,150,100,100" alt="" href="#card3">
+  </map>
+  <map name="card2map">
+    <area shape="rect" coords="0,0,100,100" alt="" href="#card4">
+  </map>
+<map name="card3map">
+    <area shape="rect" coords="0,0,100,100" alt="" href="#card5">
   </map>
 
-  <img src="img/card_solo/p-02color.jpg" id="card2" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-03color.jpg" id="card3" class="image puzzle" data-scale="1"/>
+<map name="card5map">
+    <area shape="rect" coords="0,0,100,100" alt="" href="#card6">
+  </map>
+<map name="card6map">
+    <area shape="rect" coords="0,0,100,100" alt="" href="#card7">
+  </map>
 
-
-  <img src="img/card_solo/p-04color.jpg" id="card4" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-05color.jpg" id="card5" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-06color.jpg" id="card6" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-07color.jpg" id="card7" class="image puzzle" data-scale="1"/>
 
 </div>
 <div id="commands">
@@ -243,7 +256,34 @@
       $('zoomin').addEventListener('click', zoomin);
       $('zoomout').addEventListener('click', zoomout);
 
+
+      let a = document.getElementsByTagName('area');
+      for(let i = 0;i < a.length; i++)
+      {
+        a[i].addEventListener('click', function(e){
+          e.preventDefault();
+          var elt = $_(this.getAttribute('href'));
+          elt.className += ' image-show';
+          elt.style.zIndex=2;
+          elt.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+        });
+      }
+
+
     });
+
+    // We need to disable the following event handlers so that the browser doesn't try to
+    // automatically handle our image drag gestures.
+    var disableImgEventHandlers = function () {
+      var events = ['onclick', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover',
+        'onmouseup', 'ondblclick', 'onfocus', 'onblur'];
+
+      events.forEach(function (event) {
+        img[event] = function () {
+          return false;
+        };
+      });
+    };
 
     /* ---------------------------------------------- canvas level zoom */
     /* ZOOM */
@@ -286,7 +326,7 @@
           $puzzlepieces[i].style.zIndex=0;
         }
         elem.style.zIndex = 1;
-        elem.className='image puzzle shadow-up';
+        elem.className+=' shadow-up';
         lastPosX = elem.offsetLeft;
         lastPosY = elem.offsetTop;
       }
@@ -312,7 +352,7 @@
       // this is where we simply forget we are dragging
       if (ev.isFinal) {
         isDragging = false;
-        elem.className='image puzzle';
+        elem.className = elem.className.replace(' shadow-up', '');
       }
     }
   </script>
