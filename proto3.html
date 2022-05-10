@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <!-- leafleet-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+          integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+          crossorigin=""></script>
+  <style>
+.card-list{
+
+}
+.card-viewer{
+
+}
+    .card{
+      margin: 20px;
+
+      background: #b3d4fc;
+      border: 2px solid black;
+      border-radius: 10px;
+
+      height: 250px;
+      display: none;
+      width:28%;
+
+      float:left;
+    }
+    @media (max-width: 600px) {
+      .card{
+        width:90%;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="card-list">
+  <div id="img1" class="card" onclick="show('img2')" style="display: block">&nbsp;</div>
+  <div id="img2" class="card" onclick="show('img3')">&nbsp;</div>
+  <div id="img3" class="card" onclick="show('img4')">&nbsp;</div>
+  <div id="img4" class="card" onclick="">&nbsp;</div>
+</div>
+<div class="card-viewer">
+
+</div>
+
+
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+<script>
+  function show(card){
+    document.getElementById(card).style.display='block';
+  }
+
+  var map = L.map('img1').setView([51.505, -0.09], 13);
+  var map2 = L.map('img2').setView([51.505, -0.09], 13);
+  var map3 = L.map('img3').setView([51.505, -0.09], 13);
+  var map4 = L.map('img4').setView([51.505, -0.09], 13);
+</script>
+
+</body>
+
+</html>
