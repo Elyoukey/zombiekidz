@@ -173,13 +173,19 @@
 
 <div id="canvas" class="zoom-level-5">
 
-  <img src="img/card_solo/p-01color.jpg" id="card1" class="image puzzle" />
-  <img src="img/card_solo/p-02color.jpg" id="card2" class="image puzzle" />
-  <img src="img/card_solo/p-03color.jpg" id="card3" class="image puzzle" />
-  <img src="img/card_solo/p-04color.jpg" id="card4" style="width: 500px" class="image puzzle" />
-  <img src="img/card_solo/p-05color.jpg" id="card5" class="image puzzle" />
-  <img src="img/card_solo/p-06color.jpg" id="card6" class="image puzzle" />
-  <img src="img/card_solo/p-07color.jpg" id="card7" class="image puzzle" />
+  <img src="img/card_solo/p-01color.jpg" id="card1" usemap="#card1map" class="image puzzle" data-scale="1"/>
+  <map name="card1map">
+    <area shape="rect" coords="34,44,270,350" alt="" href="#card5">
+  </map>
+
+  <img src="img/card_solo/p-02color.jpg" id="card2" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-03color.jpg" id="card3" class="image puzzle" data-scale="1"/>
+
+
+  <img src="img/card_solo/p-04color.jpg" id="card4" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-05color.jpg" id="card5" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-06color.jpg" id="card6" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-07color.jpg" id="card7" class="image puzzle" data-scale="1"/>
 
 </div>
 <div id="commands">
@@ -199,14 +205,25 @@
     function $_s(q){ return document.querySelectorAll(q);}
 
     /* --------------------------------------------------- Variables */
-    var isDragging = false;
+    var zoomLevel = 5; // default canvas zoom level
+
+    var newScale = 1; // used in pinch mage zoom
+
+    var lastPosX = 0; // for image dragging
+    var lastPosY = 0; // for image dragging
+    var isDragging = false; // for image dragging
+
 
     /* ----------------------------------------------------- Dom elements */
-    var $puzzlepieces = $_s('#canvas .puzzle');
-    var $canvas = $('canvas');
+    var $puzzlepieces;
+    var $canvas;
 
     /* ----------------------------------------------------- DOM load */
     document.addEventListener("DOMContentLoaded", function(){
+
+      // initiate dom elements
+      $puzzlepieces = $_s('#canvas .puzzle');
+      $canvas = $('canvas');
 
       // Hammer js
       for(let i = 0; i<$puzzlepieces.length; i++){
@@ -217,10 +234,9 @@
         mc.on("pan",touchDrag);
 
         // pinch zoom images
-        var cc = new Hammer($('canvas'));
-        cc.add( new Hammer.Pinch());
-        cc.on("pinch", pinchZoom);
-        cc.on("pinchend", pinchZoomEnd);
+        mc.add( new Hammer.Pinch());
+        mc.on("pinch", pinchZoom);
+        mc.on("pinchend", pinchZoomEnd);
       }
 
       // zoom buttons
@@ -231,7 +247,6 @@
 
     /* ---------------------------------------------- canvas level zoom */
     /* ZOOM */
-    let zoomLevel = 5;
     function zoom(e){
       if( e.deltaY > 0){ return zoomout(e);}
       else{ return zoomin(e);}
@@ -246,22 +261,20 @@
       zoomLevel++;
       $('canvas').className = 'zoom-level-' + zoomLevel;
     }
-    /* ---------------------------------------------- ZOOM functions */
-    let scaleLevel = 1;
-    let locScale = 1;
-    var width = 1900;
+
+    /* ---------------------------------------------- ZOOM functions for cards */
     function pinchZoom(e){
-      e.target.style.width  = (width * e.scale) + 'px';// *= e.scale;
+      let lastScale = e.target.getAttribute('data-scale');
+      newScale = lastScale * e.scale;
+      e.target.style.transform="scale("+newScale+")"; // this is not optimum reset the scale every pinch
     }
 
     function pinchZoomEnd(e){
-      width = width * e.scale;
+      e.target.setAttribute('data-scale', newScale);
     }
 
     /* ------------------------------------------------ DRAG */
-    var lastPosX = 0;
-    var lastPosY = 0;
-    var isDragging = false;
+
     function touchDrag(ev) {
       // for convience, let's get a reference to our object
       var elem = ev.target;
