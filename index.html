@@ -28,7 +28,7 @@
       visibility: hidden;
       width: 350px;
       border-radius: 10px;
-      border:10px solid white;
+      border:10px solid #f6f6f6;
       box-shadow: 10px 5px 5px #555555;
     }
 
@@ -47,48 +47,49 @@
 
     .shadow-up{box-shadow: 20px 10px 10px #555555;}
 
-    /*#card1{
+    #card1{
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 330px;
+      left: 350px;
+      width: 450px;
     }
 
     #card2{
       position: absolute;
-      top: 10px;
-      left: 620px;
+      top: 30px;
+      left: 120px;
     }
 
     #card3{
       position: absolute;
-      top: 10px;
-      left: 1300px;
+      top: 53px;
+      left: 510px;
     }
 
     #card4{
       position: absolute;
-      top: 600px;
-      left: 600px;
+      top: 37px;
+      left: 900px;
     }
 
     #card5{
       position: absolute;
-      top: 1200px;
-      left: 10px;
+      top: 660px;
+      left: 90px;
     }
 
     #card6{
       position: absolute;
-      top: 1200px;
-      left: 620px;
+      top: 710px;
+      left: 470px;
     }
 
     #card7{
       position: absolute;
-      top: 1200px;
-      left: 1300px;
+      top: 650px;
+      left: 870px;
     }
-*/
+
     #canvas{
       width: 100em;
       height: 100em;
@@ -175,30 +176,30 @@
   <img src="img/card_solo/p-01color.jpg" id="card1" usemap="#card1map" class="image puzzle image-show" data-scale="1"/>
   <img src="img/card_solo/p-02color.jpg" id="card2" usemap="#card2map" class="image puzzle" data-scale="1"/>
   <img src="img/card_solo/p-03color.jpg" id="card3" usemap="#card3map" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-04color.jpg" id="card4" usemap="#card4map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-04color.jpg" id="card4" class="image puzzle" data-scale="1"/>
   <img src="img/card_solo/p-05color.jpg" id="card5" usemap="#card5map" class="image puzzle" data-scale="1"/>
   <img src="img/card_solo/p-06color.jpg" id="card6" usemap="#card6map" class="image puzzle" data-scale="1"/>
-  <img src="img/card_solo/p-07color.jpg" id="card7" usemap="#card7map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-07color.jpg" id="card7" class="image puzzle" data-scale="1"/>
 
   <!-- mappings -->
   <map name="card1map">
-    <area shape="rect" coords="0,0,100,100" alt="" href="#card2">
-    <area shape="rect" coords="150,150,100,100" alt="" href="#card3">
+    <area shape="rect" coords="140,170,190,220" alt="" href="#card2">
+    <area shape="poly" coords="300,85,390,30,430,75,325,130" alt="" href="#card3">
   </map>
   <map name="card2map">
-    <area shape="rect" coords="0,0,100,100" alt="" href="#card4">
+    <area shape="rect" coords="75,110,100,150" alt="" href="#card4">
   </map>
-<map name="card3map">
-    <area shape="rect" coords="0,0,100,100" alt="" href="#card5">
+  <map name="card3map">
+    <area shape="rect" coords="150,130,195,160" alt="" href="#card5">
   </map>
 
 <map name="card5map">
-    <area shape="rect" coords="0,0,100,100" alt="" href="#card6">
+    <area shape="rect" coords="100,100,140,150" alt="" href="#card6">
   </map>
 <map name="card6map">
-    <area shape="rect" coords="0,0,100,100" alt="" href="#card7">
+    <area shape="rect" coords="160,210,210,230" alt="" href="#card7">
   </map>
-
+<!-- -->
 
 </div>
 <div id="commands">
@@ -271,19 +272,6 @@
 
 
     });
-
-    // We need to disable the following event handlers so that the browser doesn't try to
-    // automatically handle our image drag gestures.
-    var disableImgEventHandlers = function () {
-      var events = ['onclick', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover',
-        'onmouseup', 'ondblclick', 'onfocus', 'onblur'];
-
-      events.forEach(function (event) {
-        img[event] = function () {
-          return false;
-        };
-      });
-    };
 
     /* ---------------------------------------------- canvas level zoom */
     /* ZOOM */
