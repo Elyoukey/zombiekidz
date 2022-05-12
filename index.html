@@ -30,6 +30,8 @@
       border-radius: 10px;
       border:10px solid #f6f6f6;
       box-shadow: 10px 5px 5px #555555;
+
+      cursor: grab;
     }
 
     .image-show{
@@ -97,7 +99,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      cursor: grab;
     }
 
     #commands{
@@ -258,6 +259,7 @@
       $('zoomout').addEventListener('click', zoomout);
 
 
+      // click area
       let a = document.getElementsByTagName('area');
       for(let i = 0;i < a.length; i++)
       {
@@ -271,6 +273,12 @@
       }
 
 
+      // click ptu on top
+      for(let i = 0; i<$puzzlepieces.length; i++){
+        $puzzlepieces[i].addEventListener('click', function (e){
+          putOnTop(this);
+        });
+      }
     });
 
     /* ---------------------------------------------- canvas level zoom */
@@ -310,10 +318,7 @@
       // drag start
       if ( ! isDragging ) {
         isDragging = true;
-        for(let i = 0; i<$puzzlepieces.length; i++){
-          $puzzlepieces[i].style.zIndex=0;
-        }
-        elem.style.zIndex = 1;
+        putOnTop(elem);
         elem.className+=' shadow-up';
         lastPosX = elem.offsetLeft;
         lastPosY = elem.offsetTop;
@@ -341,7 +346,16 @@
       if (ev.isFinal) {
         isDragging = false;
         elem.className = elem.className.replace(' shadow-up', '');
+        putOnTop(elem);
       }
+    }
+
+    function putOnTop(puzzlepiece){
+      console.log(puzzlepiece);
+      for(let i = 0; i<$puzzlepieces.length; i++){
+        $puzzlepieces[i].style.zIndex-=1;
+      }
+      puzzlepiece.style.zIndex=1;
     }
   </script>
 </body>
