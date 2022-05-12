@@ -1,0 +1,350 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <style>body{overflow: scroll}
+    .image{
+      position: absolute;
+      top: 140px;
+      left: 140px;
+      visibility: hidden;
+      width: 350px;
+      border-radius: 10px;
+      border:10px solid #f6f6f6;
+      box-shadow: 10px 5px 5px #555555;
+
+      cursor: grab;
+    }
+
+    .image-show{
+      visibility: visible;
+      animation: giggle 500ms;
+
+    }
+ @keyframes giggle {
+   0%{ transform: rotate(10deg);}
+   33%{ transform: rotate(-10deg);}
+   50%{ transform: rotate(10deg);}
+   75%{ transform: rotate(-10deg);}
+   100%{ transform: rotate(0deg);}
+ }
+
+    .shadow-up{box-shadow: 20px 10px 10px #555555;}
+
+    #card1{
+      position: absolute;
+      top: 330px;
+      left: 350px;
+      width: 450px;
+    }
+
+    #card2{
+      position: absolute;
+      top: 30px;
+      left: 120px;
+    }
+
+    #card3{
+      position: absolute;
+      top: 53px;
+      left: 510px;
+    }
+
+    #card4{
+      position: absolute;
+      top: 37px;
+      left: 900px;
+    }
+
+    #card5{
+      position: absolute;
+      top: 660px;
+      left: 90px;
+    }
+
+    #card6{
+      position: absolute;
+      top: 710px;
+      left: 470px;
+    }
+
+    #card7{
+      position: absolute;
+      top: 650px;
+      left: 870px;
+    }
+
+    #canvas{
+      width: 100em;
+      height: 100em;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #commands{
+      position: fixed;
+      top:0;
+      left:0;
+      padding: 1vh;
+    }
+
+    #commands .control{
+      border-radius: 5px;
+      background: #222222;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      opacity: 0.7;
+      width: 36px;
+      height: 36px;
+      line-height: 34px;
+      display: block;
+      text-align: center;
+      margin: 7px;
+    }
+
+    .zoom-level-1{
+      transform: scale(0.1);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-2{
+      transform: scale(0.25);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-3{
+      transform: scale(0.5);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-4{
+      transform: scale(0.75);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-5{
+      transform: scale(1);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-6{
+      transform: scale(1.25);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-7{
+      transform: scale(1.5);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-8{
+      transform: scale(1.75);
+      transform-origin: 0% 0% 0px;
+      transition: transform 0.2s;
+    }
+    .zoom-level-9{
+      transform: scale(2);
+      transform-origin: 0% 0% 0px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="canvas" class="zoom-level-5">
+
+  <img src="img/card_solo/p-01color.jpg" id="card1" usemap="#card1map" class="image puzzle image-show" data-scale="1"/>
+  <img src="img/card_solo/p-02color.jpg" id="card2" usemap="#card2map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-03color.jpg" id="card3" usemap="#card3map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-04color.jpg" id="card4" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-05color.jpg" id="card5" usemap="#card5map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-06color.jpg" id="card6" usemap="#card6map" class="image puzzle" data-scale="1"/>
+  <img src="img/card_solo/p-07color.jpg" id="card7" class="image puzzle" data-scale="1"/>
+
+  <!-- mappings -->
+  <map name="card1map">
+    <area shape="rect" coords="140,170,190,220" alt="" href="#card2">
+    <area shape="poly" coords="300,85,390,30,430,75,325,130" alt="" href="#card3">
+  </map>
+  <map name="card2map">
+    <area shape="rect" coords="75,110,100,150" alt="" href="#card4">
+  </map>
+  <map name="card3map">
+    <area shape="rect" coords="150,130,195,160" alt="" href="#card5">
+  </map>
+
+<map name="card5map">
+    <area shape="rect" coords="100,100,140,150" alt="" href="#card6">
+  </map>
+<map name="card6map">
+    <area shape="rect" coords="160,210,210,230" alt="" href="#card7">
+  </map>
+<!-- -->
+
+</div>
+<div id="commands">
+  <a class="control" role="button" href="#" id="zoomin" aria-label="zoom in">+</a>
+  <a class="control" role="button" href="#" id="zoomout" aria-label="zoom out" >-</a>
+</div>
+
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/vendor/hammer.min.js"></script>
+
+  <script>
+    /* ------------------------------------------------------Utilities */
+    function $(id){ return document.getElementById(id);}
+    function $_(q){ return document.querySelector(q);}
+    function $_s(q){ return document.querySelectorAll(q);}
+
+    /* --------------------------------------------------- Variables */
+    var zoomLevel = 5; // default canvas zoom level
+
+    var newScale = 1; // used in pinch mage zoom
+
+    var lastPosX = 0; // for image dragging
+    var lastPosY = 0; // for image dragging
+    var isDragging = false; // for image dragging
+
+
+    /* ----------------------------------------------------- Dom elements */
+    var $puzzlepieces;
+    var $canvas;
+
+    /* ----------------------------------------------------- DOM load */
+    document.addEventListener("DOMContentLoaded", function(){
+
+      // initiate dom elements
+      $puzzlepieces = $_s('#canvas .puzzle');
+      $canvas = $('canvas');
+
+      // Hammer js
+      for(let i = 0; i<$puzzlepieces.length; i++){
+        var mc = new Hammer($puzzlepieces[i]);
+
+        // drag
+        mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+        mc.on("pan",touchDrag);
+
+        // pinch zoom images
+        mc.add( new Hammer.Pinch());
+        mc.on("pinch", pinchZoom);
+        mc.on("pinchend", pinchZoomEnd);
+      }
+
+      // zoom buttons
+      $('zoomin').addEventListener('click', zoomin);
+      $('zoomout').addEventListener('click', zoomout);
+
+
+      let a = document.getElementsByTagName('area');
+      for(let i = 0;i < a.length; i++)
+      {
+        a[i].addEventListener('click', function(e){
+          e.preventDefault();
+          var elt = $_(this.getAttribute('href'));
+          elt.className += ' image-show';
+          elt.style.zIndex=2;
+          elt.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+        });
+      }
+
+
+    });
+
+    /* ---------------------------------------------- canvas level zoom */
+    /* ZOOM */
+    function zoom(e){
+      if( e.deltaY > 0){ return zoomout(e);}
+      else{ return zoomin(e);}
+    }
+    function zoomout(e){
+      if(zoomLevel==1)return;
+      zoomLevel--;
+      $('canvas').className='zoom-level-'+zoomLevel;
+    }
+    function zoomin(e) {
+      if (zoomLevel >= 9) return;
+      zoomLevel++;
+      $('canvas').className = 'zoom-level-' + zoomLevel;
+    }
+
+    /* ---------------------------------------------- ZOOM functions for cards */
+    function pinchZoom(e){
+      let lastScale = e.target.getAttribute('data-scale');
+      newScale = lastScale * e.scale;
+      e.target.style.transform="scale("+newScale+")"; // this is not optimum reset the scale every pinch
+    }
+
+    function pinchZoomEnd(e){
+      e.target.setAttribute('data-scale', newScale);
+    }
+
+    /* ------------------------------------------------ DRAG */
+
+    function touchDrag(ev) {
+      // for convience, let's get a reference to our object
+      var elem = ev.target;
+
+      // drag start
+      if ( ! isDragging ) {
+        isDragging = true;
+        for(let i = 0; i<$puzzlepieces.length; i++){
+          $puzzlepieces[i].style.zIndex=0;
+        }
+        elem.style.zIndex = 1;
+        elem.className+=' shadow-up';
+        lastPosX = elem.offsetLeft;
+        lastPosY = elem.offsetTop;
+      }
+
+
+      // we simply need to determine where the x,y of this
+      // object is relative to where it's "last" known position is
+      // NOTE:
+      //    deltaX and deltaY are cumulative
+      // Thus we need to always calculate 'real x and y' relative
+      // to the "lastPosX/Y"
+
+      // adjust with the zoom level of the canvas
+      var scaleX = $canvas.getBoundingClientRect().width / $canvas.offsetWidth;
+      var posX = ev.deltaX*(1/scaleX) + lastPosX;
+      var posY = ev.deltaY*(1/scaleX) + lastPosY;
+
+      // move our element to that position
+      elem.style.left = posX + "px";
+      elem.style.top = posY + "px";
+
+      // DRAG ENDED
+      // this is where we simply forget we are dragging
+      if (ev.isFinal) {
+        isDragging = false;
+        elem.className = elem.className.replace(' shadow-up', '');
+      }
+    }
+  </script>
+</body>
+
+</html>
